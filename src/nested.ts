@@ -139,6 +139,7 @@ export function renameQuestionById(
  * Remember, if a function starts getting too complicated, think about how a helper function
  * can make it simpler! Break down complicated tasks into little pieces.
  *
+ *
  * Hint: you need to use the ... operator for both the question and the options array
  */
 export function editOption(

@@ -1,5 +1,9 @@
 import React from "react";
 import "./App.css";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { TwoDice } from "./components/TwoDice";
+import { Counter } from "./components/Counter";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import picture from "./images/Spider-Man_With_a_Wrench.jpg";
 
@@ -33,11 +37,14 @@ function App(): React.JSX.Element {
             >
                 Log Hello World!
             </Button>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload. Nathan Wheeler Hello World
-            </p>
-
+            <hr></hr>
+            <Counter></Counter>
+            <hr />
+            <RevealAnswer></RevealAnswer>
+            <hr />
+            <TwoDice></TwoDice>
+            <hr /> Nathan Wheeler Hello World
+            <ChangeType></ChangeType>
             <Container>
                 <Row>
                     <Col>
