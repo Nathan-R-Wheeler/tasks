@@ -5,7 +5,18 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    if (numbers.length === 0) {
+        return numbers;
+    } else if (numbers.length === 1) {
+        const doubleArray = [...numbers, numbers[0]];
+
+        return doubleArray;
+    } else {
+        const first = numbers[0];
+        const last = numbers[numbers.length - 1];
+        const firstLast = [first, last];
+        return firstLast;
+    }
 }
 
 /**
@@ -13,7 +24,11 @@ export function bookEndList(numbers: number[]): number[] {
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    const tripledNumbers = numbers.map(
+        (numbers: number): number => 3 * numbers,
+        numbers,
+    );
+    return tripledNumbers;
 }
 
 /**
@@ -21,7 +36,15 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    const intList = numbers.map((thisNumber) => {
+        const parsedList = parseInt(thisNumber);
+        if (isNaN(parsedList)) {
+            return 0;
+        } else {
+            return parsedList;
+        }
+    });
+    return intList;
 }
 
 /**
@@ -32,7 +55,16 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const fixedNumbers = [] as number[];
+    amounts.map((number) => {
+        const fixedNumber = Number(number.replace("$", ""));
+        if (isNaN(fixedNumber)) {
+            fixedNumbers.push(0);
+        } else {
+            fixedNumbers.push(fixedNumber);
+        }
+    });
+    return fixedNumbers;
 };
 
 /**
@@ -41,7 +73,11 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    const removeQues = messages.filter((word) => !word.endsWith("?"));
+    const toCap = removeQues.map((word) =>
+        word.endsWith("!") ? word.toUpperCase() : word,
+    );
+    return toCap;
 };
 
 /**
@@ -49,7 +85,11 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const wordsLength = words.map((word) => word.length);
+    const lowertnFour = wordsLength.filter((length) => length < 4);
+    const numWords = lowertnFour.length;
+
+    return numWords;
 }
 
 /**
@@ -58,7 +98,9 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    const loweredCase = colors.map((string) => string.toLowerCase());
+    const validColors = ["red", "green", "blue"];
+    return loweredCase.every((color) => validColors.includes(color));
 }
 
 /**
@@ -69,7 +111,18 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    if (addends.length === 0) {
+        return "0=0";
+    } else if (addends.length === 1) {
+        return `${addends[0]}=${addends[0]}`;
+    } else {
+        const sum = addends.reduce(
+            (currentTotal, num) => currentTotal + num,
+            0,
+        );
+        const addingNum = addends.join("+");
+        return `${sum}=${addingNum}`;
+    }
 }
 
 /**
@@ -82,5 +135,38 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const initialize = {
+        hasNegative: false,
+        sum: 0,
+        finalArray: [] as number[],
+    };
+    const finalAccumulator = values.reduce((accumulator, value) => {
+        const { hasNegative, sum, finalArray } = accumulator;
+
+        if (!hasNegative) {
+            if (value < 0) {
+                return {
+                    hasNegative: true,
+                    sum: sum,
+                    finalArray: [...finalArray, value, sum],
+                };
+            } else {
+                return {
+                    hasNegative: false,
+                    sum: sum + value,
+                    finalArray: [...finalArray, value],
+                };
+            }
+        } else {
+            return {
+                ...accumulator,
+                finalArray: [...finalArray, value],
+            };
+        }
+    }, initialize);
+    if (!finalAccumulator.hasNegative) {
+        return [...finalAccumulator.finalArray, finalAccumulator.sum];
+    } else {
+        return finalAccumulator.finalArray;
+    }
 }
