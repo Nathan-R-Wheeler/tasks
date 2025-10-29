@@ -4,8 +4,9 @@ import { ChangeType } from "./components/ChangeType";
 import { RevealAnswer } from "./components/RevealAnswer";
 import { TwoDice } from "./components/TwoDice";
 import { Counter } from "./components/Counter";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import picture from "./images/Spider-Man_With_a_Wrench.jpg";
+import { DoubleHalf } from "./bad-components/DoubleHalf";
+import { ColoredBox } from "./bad-components/ColoredBox";
+import { ChooseTeam } from "./bad-components/ChooseTeam";
 
 function App(): React.JSX.Element {
     return (
@@ -13,30 +14,12 @@ function App(): React.JSX.Element {
             <header className="App-header">
                 UM COS420 with React Hooks and TypeScript
             </header>
-            <h1>
-                {" "}
-                <span style={{ color: "red" }}>
-                    AUUUGH THE ANTS ARE EATING MEEEEEEE
-                </span>
-            </h1>
-            <img
-                src={picture}
-                width="400"
-                height="400"
-                alt="The image failed to load"
-            />
-            <ol>
-                <li>Smack</li>
-                <li>WACK</li>
-                <li>STUPID ANTS!</li>
-            </ol>
-            <Button
-                onClick={() => {
-                    console.log("Hello World!");
-                }}
-            >
-                Log Hello World!
-            </Button>
+            <hr></hr>
+            {/* <DoubleHalf></DoubleHalf> */}
+            <hr></hr>
+            <ChooseTeam></ChooseTeam>
+            <hr></hr>
+            <ColoredBox></ColoredBox>
             <hr></hr>
             <Counter></Counter>
             <hr />
