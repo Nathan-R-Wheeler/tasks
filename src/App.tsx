@@ -28,7 +28,11 @@ function App(): React.JSX.Element {
                 options={["a", "b", "c"]}
                 expectedAnswer="b"
             ></MultipleChoiceQuestion>
-            <Button onClick={() => console.log("Hello World!")}>
+            <Button
+                onClick={() => {
+                    console.log("Hello World!");
+                }}
+            >
                 Log Hello World
             </Button>
             <img src={spiderMan} alt="SpiderMan holding Wrench"></img>

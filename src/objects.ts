@@ -1,4 +1,4 @@
-import { NONAME } from "dns";
+//import { NONAME } from "dns";
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
